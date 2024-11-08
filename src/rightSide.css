@@ -1,0 +1,79 @@
+.containerR{
+  display:flex;
+  width:clamp(200px,40%,40%);
+  flex-direction: column;
+  background-color: bisque;
+  min-height:80%;
+  margin-top:2rem;
+}
+
+.personalSection{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  max-height: 150px;
+  background-color: dimgray; 
+  padding-bottom:1rem;
+}
+input{
+  border-radius: 25px;
+  background-color: dimgrey;
+  border: none;
+  min-height:30px;
+}
+.name{
+  font-size: 4rem;
+}
+
+.contactSection{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:3rem;
+}
+.workSection
+{
+  width:85%;
+  margin: 0 auto;
+}
+.workHead{
+  text-align: middle;
+  font-size:2.5rem;
+  background-color: grey;
+  margin-top: 2rem;
+  width:85%;
+  margin-left: auto;
+  margin-right:auto;
+
+}
+.jobTitle
+{
+  display:flex;
+  font-size:1.5rem;
+  font-weight:800;
+  text-align:left;
+  justify-content:space-between;
+
+}
+
+.dateExperience{
+  
+  font-size:1rem;
+  align-self: center;
+  text-align:right;
+  
+}
+.companyTitle
+{
+  text-align:left;
+  font-weight:600;
+}
+.jobDescription
+{
+  text-align: left;
+  white-space: pre-wrap;
+  margin-top:.5rem;
+  font-size: 14px;
+}
+
+
