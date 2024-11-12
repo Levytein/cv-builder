@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 function PersonalInput({ setPersonalData }) {
   const [formData, setFormData] = useState({
+    name:"John Smith",
     email: 'example@gmail.com',
     phoneNumber: '123-456-7890',
     social: 'skibidi'
@@ -16,7 +17,16 @@ function PersonalInput({ setPersonalData }) {
   return (
     <div className="personalInput leftSection">
       <h2 className="sectionName">Personal Details</h2>
-      
+
+      <div className="inputField">
+        <label>Name</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+      </div>
       <div className="inputField">
         <label>Email</label>
         <input

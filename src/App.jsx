@@ -11,6 +11,7 @@ import './rightSide.css';
 
 function App() {
   const [personalData, setPersonalData] = useState({
+    name:'John Smith',
     email: 'example@gmail.com',
     phoneNumber: '123-456-7890',
     social: 'skibidi'
@@ -48,7 +49,7 @@ function App() {
     jobDesc: ''
   });
   const [isCreatingNew, setIsCreatingNew] = useState(false); // Track if user is creating a new experience
-
+  const [isCreatingNewEducation, setIsCreatingNewEducation] = useState(false);
   const addOrUpdateExperience = (experience) => {
     if (selectedExperience) {
       setWorkExperiences((prevExperiences) =>
@@ -154,8 +155,10 @@ function App() {
   // Handle input change in the education form
   const handleEducationInputChange = (e) => {
     const { name, value } = e.target;
-    const updatedFormData = { ...formData, [name]: value };
+    const updatedFormData = { ...educationFormData, [name]: value };
     setEducationFormData(updatedFormData);
+
+
     if (isCreatingNewEdu) {
       setEducationEntries((prevEducation) => [
         ...prevEducation.filter(exp => exp.id !== 'new'), // Remove old temp entry
@@ -196,7 +199,7 @@ function App() {
       description: ''
     });
     
-    setIsCreatingNew(true); // Start creating new experience
+    setIsCreatingNewEducation(true);
 
     setEducationEntries((prevEducation) => [
       ...prevEducation.filter(exp => exp.id !== 'new'), // Remove old temp entry if exists
@@ -228,12 +231,14 @@ function App() {
   educationEntries={educationEntries}
   onEducationClick={handleEducationClick}
   onAddNewEducation={handleAddNewEducation}
+  isCreatingNew={isCreatingNewEducation} 
   handleDeleteEducation={handleDeleteEducation}
 />
       </div>
 
       <div className="containerR">
         <PersonalDetail
+          name={personalData.name}
           email={personalData.email}
           phoneNumber={personalData.phoneNumber}
           social={personalData.social}
@@ -258,7 +263,7 @@ function App() {
         ))}
         {educationEntries && <h2 className="workHead">Education</h2>}
         {educationEntries
-          .filter(education => education.id !== 'new' || isCreatingNew) // Show temp entry only if creating
+          .filter(education => education.id !== 'new' || isCreatingNewEducation) // Show temp entry only if creating
           .map((education) => (
             <div
               key={education.id}

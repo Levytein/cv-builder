@@ -37,23 +37,24 @@ function WorkExperienceInput({
             <div
               key={experience.id}
               className="jobCard"
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', padding: '10px', border: '1px solid #ddd', marginBottom: '10px' }}
-            >
+              style={{ display: 'flex', alignItems: 'center',  cursor: 'pointer', padding: '10px'}}
+            ><div className="jobText">
               <div onClick={() => onExperienceClick(experience)}>
                 <h3>{experience.jobTitle} at {experience.companyName}</h3>
               </div>
-              <button
-                onClick={(e) => {
+              <button className="deleteButton" 
+                onClick={() => {
                   handleDeleteExperience(experience.id);
-                }}
-                style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white', border: 'none', padding: '5px 10px', cursor: 'pointer' }}
+                } }
+               
               >
                 Delete
               </button>
+              </div>
             </div>
           ))}
           <div className="addNewDiv">
-            <button onClick={handleAddNewClick}>
+            <button className="addNew"onClick={handleAddNewClick}>
               Add New
             </button>
           </div>
@@ -108,7 +109,7 @@ function WorkExperienceInput({
             />
           </div>
           <div className="workInputButtons">
-            <button onClick={handleSubmit}>
+            <button className="submitButton" onClick={handleSubmit}>
               {selectedExperience ? 'Update' : 'Submit'}
             </button>
           </div>

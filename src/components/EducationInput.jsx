@@ -8,68 +8,54 @@ function EducationInput({
   educationEntries,
   onEducationClick,
   onAddNewEducation,
+  IsCreatingNewEducation,
   handleDeleteEducation
 }) {
-  const [showForm, setShowForm] = useState(false);
+  const [showEducationForm, setShowEducationForm] = useState(false);
 
   useEffect(() => {
-    if (selectedEducation) {
-      setShowForm(true); // Show form if editing an education entry
+    if (selectedEducation || IsCreatingNewEducation) {
+      setShowEducationForm(true); // Show form if editing or adding new
     }
-  }, [selectedEducation]);
+  }, [selectedEducation, IsCreatingNewEducation]);
 
-  const handleSubmit = () => {
+  const handleEducationSubmit = () => {
     addOrUpdateEducation({ ...formData, id: selectedEducation?.id || Date.now() });
-    setShowForm(false); // Collapse form after save
+    setShowEducationForm(false); // Collapse form after save
   };
 
   const handleAddNewClick = () => {
     onAddNewEducation();
-    setShowForm(true); // Expand form for new education entry
+    setShowEducationForm(true); // Expand form for new education entry
   };
 
   return (
     <div className="educationInput leftSection" style={{ width: '100%' }}>
-      {!showForm ? (
+      {!showEducationForm ? (
         <div>
           <h2 className="educationHeader">Education</h2>
           {educationEntries.map((education) => (
             <div
               key={education.id}
               className="educationCard"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                cursor: 'pointer',
-                padding: '10px',
-                border: '1px solid #ddd',
-                marginBottom: '10px'
-              }}
-            >
+            ><div className="jobText">
               <div onClick={() => onEducationClick(education)}>
                 <h3>{education.degree} at {education.schoolName}</h3>
               </div>
-              <button
+              <button className="deleteButton"
                 onClick={(e) => {
                   e.stopPropagation(); // Prevents triggering the onEducationClick function
                   handleDeleteEducation(education.id);
                 }}
-                style={{
-                  marginLeft: '10px',
-                  backgroundColor: 'red',
-                  color: 'white',
-                  border: 'none',
-                  padding: '5px 10px',
-                  cursor: 'pointer'
-                }}
+              
               >
                 Delete
               </button>
+              </div>
             </div>
           ))}
           <div className="addNewDiv">
-            <button onClick={handleAddNewClick}>Add New</button>
+            <button className="addNew" onClick={handleAddNewClick}>Add New</button>
           </div>
         </div>
       ) : (
@@ -122,7 +108,7 @@ function EducationInput({
             />
           </div>
           <div className="educationInputButtons">
-            <button onClick={handleSubmit}>
+            <button className="submitButton" onClick={handleEducationSubmit}>
               {selectedEducation ? 'Update' : 'Submit'}
             </button>
           </div>

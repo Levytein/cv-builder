@@ -1,7 +1,7 @@
-function PersonalDetail({email,phoneNumber,social})
+function PersonalDetail({name,email,phoneNumber,social})
 {
     return <div className="personalSection">
-        <h2 className ="name">Giho Ju</h2>
+        <h2 className ="name">{name}</h2>
 
         <div className="contactSection">
         <div>{email}</div>

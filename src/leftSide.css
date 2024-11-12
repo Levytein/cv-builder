@@ -18,20 +18,26 @@
   display:flex;
   flex-direction: column;
   gap:1rem;
-  padding-bottom:1.5rem;
+  padding-bottom:3rem;
   margin-top: 2rem;
   background-color: rgba(255,255,255);
   min-height:150px;
   max-height:300px;
   min-width:100%;
+  padding-bottom:2
 }
-.workInput
+.workInput,.educationInput
 {
   display:flex;
   flex-direction: column;
   margin-top: 2rem;
   background-color: rgba(255,255,255);
   min-height:150px;
+}
+.workInputButtons,.educationInputButtons{
+  padding-bottom:.3rem;
+  min-height:40px;
+  align-content: center;
 }
 .jobDescriptionInput
 {
@@ -85,7 +91,7 @@ input{
 .inputField > input{
   width:100%;
 }
-.workExperienceHeader{
+.workExperienceHeader,.educationHeader{
   text-align: left;
   margin-left:3.5rem;
   margin-top: 1rem;
@@ -100,12 +106,53 @@ input{
   padding:10px;
   margin-top: .5rem;
 }
-.jobCard{
+.jobCard,.educationCard{
   border-top: .5rem solid #242424;
   text-align: left;
-  
-  margin-top:1rem;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.deleteButton{
+  /*->style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white', border: 'none', padding: '5px 10px', cursor: 'pointer' }}
+  */
+  margin-left:10px;
+  min-width:75px;
+  height:40px;
+  background-color: red;
+  color:white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  align-self: center;
+  border-radius: 50px;
+}
+.jobText{
+  width:80%;
+  display:flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right:auto;
 }
 .jobCard >h3{
   margin-left:3.5rem;
+}
+.addNew{
+  background-color: rgb(29, 78, 216);
+  border:none;
+  border-radius: 10px;
+  color:white;
+}
+.submitButton{
+  background-color: rgb(29, 78, 216);
+  border:none;
+  border-radius: 10px;
+  color:white;
+  height:30px;
+  width:75px;
+}
+input{
+  border-radius: 25px;
+
+  border: none;
+  min-height:30px;
 }
